@@ -4,14 +4,12 @@ import android.app.Application
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApplicationController : Application(){
-
-    lateinit var networkService: NetworkService
+class ApplicationController : Application() {
+    lateinit var networkSerVice : NetworkService
     private val baseUrl = "http://13.125.118.111:3009/"
-
-    companion object {
+    companion object{
         lateinit var instance : ApplicationController
-        // 일종의 스태틱
+        //일종의 스태틱
     }
 
 
@@ -21,14 +19,12 @@ class ApplicationController : Application(){
         buildNetwork()
     }
 
-
-    fun buildNetwork() {
+    fun buildNetwork(){
         val builder = Retrofit.Builder()
         val retrofit = builder
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-
-        networkService = retrofit.create(NetworkService::class.java)
+        networkSerVice = retrofit.create(NetworkService::class.java)
     }
 }

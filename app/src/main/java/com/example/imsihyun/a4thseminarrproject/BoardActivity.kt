@@ -1,5 +1,6 @@
 package com.example.imsihyun.a4thseminarrproject
 
+
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
@@ -11,12 +12,16 @@ import android.util.Log
 import com.bumptech.glide.Glide
 import com.example.imsihyun.a4thseminarrproject.post.PostBoardResponse
 import kotlinx.android.synthetic.main.activity_board.*
-import okhttp3.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
-
 
 class BoardActivity : AppCompatActivity() {
 
@@ -29,7 +34,7 @@ class BoardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_board)
-        networkService = ApplicationController.instance.networkService
+        networkService = ApplicationController.instance.networkSerVice
         write_image_btn.setOnClickListener {
             changeImage()
         }
@@ -90,23 +95,38 @@ class BoardActivity : AppCompatActivity() {
         startActivityForResult(intent, REQ_CODE_SELECT_IMAGE)
     }
 
-    fun postBoard() {
-        val title = RequestBody.create(MediaType.parse("text/plain"), write_title_tv.text.toString())
-        val content = RequestBody.create(MediaType.parse("text/plain"), write_content_tv.text.toString())
-        val id = RequestBody.create(MediaType.parse("text/plain"), "pikapika")
-        val postBoardResponse = networkService.postBoard(image, title, content, id)
+    fun postBoard(){
 
-        postBoardResponse.enqueue(object : Callback<PostBoardResponse> {
+
+
+
+
+
+        val title = RequestBody.create(MediaType.parse("text/plain"),
+                write_title_tv.text.toString())
+
+        val content = RequestBody.create(MediaType.parse("text/plain"),
+                write_content_tv.text.toString())
+
+        val id = RequestBody.create(MediaType.parse("text/plain"),
+                "pikachu")
+
+        val postBoardResponse = networkService.postBoard(image, title, content, id)
+        postBoardResponse.enqueue(object : Callback<PostBoardResponse>{
             override fun onFailure(call: Call<PostBoardResponse>?, t: Throwable?) {
             }
 
             override fun onResponse(call: Call<PostBoardResponse>?, response: Response<PostBoardResponse>?) {
-                if(response!!.isSuccessful) {
+                if(response!!.isSuccessful){
                     startActivity(Intent(applicationContext, MainActivity::class.java))
+                    finish()
                 }
             }
 
         })
+
+
     }
 
 }
+

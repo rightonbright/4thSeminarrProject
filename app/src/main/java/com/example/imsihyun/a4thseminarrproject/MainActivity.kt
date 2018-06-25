@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        networkService = ApplicationController.instance.networkService
+        networkService = ApplicationController.instance.networkSerVice
         requestManager = Glide.with(this)
         main_board_list.layoutManager = LinearLayoutManager(this)
         main_write_btn.setOnClickListener {
