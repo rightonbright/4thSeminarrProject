@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.bumptech.glide.Glide
 import com.example.imsihyun.a4thseminarrproject.post.PostBoardResponse
-import com.example.imsodam_i.a4thseminarproject.post.PostBoardResponse
 import kotlinx.android.synthetic.main.activity_board.*
 import okhttp3.*
 import java.io.ByteArrayOutputStream
@@ -91,31 +90,23 @@ class BoardActivity : AppCompatActivity() {
         startActivityForResult(intent, REQ_CODE_SELECT_IMAGE)
     }
 
-    fun postBoard(){
-        val title = RequestBody.create(MediaType.parse("text/plain"),
-                write_title_tv.text.toString())
-
-        val content = RequestBody.create(MediaType.parse("text/plain"),
-                write_content_tv.text.toString())
-
-        val id = RequestBody.create(MediaType.parse("text/plain"),
-                "pikachu")
-
+    fun postBoard() {
+        val title = RequestBody.create(MediaType.parse("text/plain"), write_title_tv.text.toString())
+        val content = RequestBody.create(MediaType.parse("text/plain"), write_content_tv.text.toString())
+        val id = RequestBody.create(MediaType.parse("text/plain"), "pikapika")
         val postBoardResponse = networkService.postBoard(image, title, content, id)
+
         postBoardResponse.enqueue(object : Callback<PostBoardResponse> {
             override fun onFailure(call: Call<PostBoardResponse>?, t: Throwable?) {
             }
 
             override fun onResponse(call: Call<PostBoardResponse>?, response: Response<PostBoardResponse>?) {
-                if(response!!.isSuccessful){
+                if(response!!.isSuccessful) {
                     startActivity(Intent(applicationContext, MainActivity::class.java))
-                    finish()
                 }
             }
 
         })
-
-
     }
 
 }

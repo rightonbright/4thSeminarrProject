@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
-import com.example.imsodam_i.a4thseminarproject.get.GetBoardResponseData
+import com.example.imsihyun.a4thseminarrproject.get.GetBoardResponseData
 
-class BoardAdapter(var boardItems : ArrayList<GetBoardResponseData>,
-                   var requestManager : RequestManager) : RecyclerView.Adapter<BoardViewHolder>() {
+class BoardAdapter(var boardItems : ArrayList<GetBoardResponseData>, var requestManager : RequestManager)  : RecyclerView.Adapter<BoardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardViewHolder {
         val mainView : View = LayoutInflater.from(parent.context)
