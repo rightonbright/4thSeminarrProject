@@ -17,7 +17,7 @@ interface NetworkService {
             @Part("user_id") id : RequestBody,
             @Part("board_title") title: RequestBody,
             @Part("board_content") content : RequestBody
-    ) : Call<PostBoardResponse>
+            ) : Call<PostBoardResponse>
 
 
     @GET("board")
@@ -27,4 +27,5 @@ interface NetworkService {
     fun postPart(
             @Body temp : PostTemp
     ) : Call<Unit>
+
 }

@@ -1,6 +1,5 @@
 package com.example.imsihyun.a4thseminarrproject
 
-
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
@@ -117,10 +116,10 @@ class BoardActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<PostBoardResponse>?, response: Response<PostBoardResponse>?) {
-                if(response!!.isSuccessful){
-                    startActivity(Intent(applicationContext, MainActivity::class.java))
-                    finish()
-                }
+                    if(response!!.isSuccessful){
+                        startActivity(Intent(applicationContext, MainActivity::class.java))
+                        finish()
+                    }
             }
 
         })

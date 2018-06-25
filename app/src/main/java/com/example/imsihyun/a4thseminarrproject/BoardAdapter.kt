@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
 import com.example.imsihyun.a4thseminarrproject.get.GetBoardResponseData
 
-class BoardAdapter(var boardItems : ArrayList<GetBoardResponseData>, var requestManager : RequestManager) : RecyclerView.Adapter<BoardViewHolder>() {
+class BoardAdapter(var boardItems : ArrayList<GetBoardResponseData>, var requestManager : RequestManager)  : RecyclerView.Adapter<BoardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardViewHolder {
         val mainView : View = LayoutInflater.from(parent.context)
@@ -25,3 +25,10 @@ class BoardAdapter(var boardItems : ArrayList<GetBoardResponseData>, var request
         requestManager.load(boardItems[position].board_photo).into(holder.boardProfile)
     }
 }
+
+
+
+
+
+
+

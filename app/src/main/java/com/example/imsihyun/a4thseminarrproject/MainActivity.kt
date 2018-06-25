@@ -1,9 +1,10 @@
 package com.example.imsihyun.a4thseminarrproject
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.example.imsihyun.a4thseminarrproject.get.GetBoardResponse
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         networkService = ApplicationController.instance.networkSerVice
         requestManager = Glide.with(this)
-        main_board_list.layoutManager = LinearLayoutManager(this)
+        main_board_list.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
         main_write_btn.setOnClickListener {
             startActivity(Intent(applicationContext, BoardActivity::class.java))
         }
@@ -49,4 +50,3 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
-
